@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voter Registration - SecureChainVote</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Voter Registration</h1>
+        <form id="registrationForm">
+            <input type="text" id="name" placeholder="Full Name" required><br>
+            <input type="text" id="voter_id" placeholder="Voter ID" required><br>
+            <input type="number" id="age" placeholder="Age" required><br>
+            <input type="text" id="address" placeholder="Address" required><br>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="message"></div>
+    </div>
+
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById('name').value,
+                voter_id: document.getElementById('voter_id').value,
+                age: document.getElementById('age').value,
+                address: document.getElementById('address').value
+            };
+
+            const res = await fetch('http://127.0.0.1:5000/register_voter', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await res.json();
+            const msgDiv = document.getElementById('message');
+            if (res.status === 200) {
+                msgDiv.style.color = "green";
+                msgDiv.innerText = result.message;
+            } else {
+                msgDiv.style.color = "red";
+                msgDiv.innerText = result.message;
+            }
+        });
+    </script>
+</body>
+</html>
