@@ -34,3 +34,20 @@ document.getElementById('resultsBtn')?.addEventListener('click', async () => {
     const data = await res.text();
     document.getElementById('results').innerHTML = data;
 });
+// Load saved theme
+window.onload = () => {
+    const theme = localStorage.getItem("theme");
+    if (theme === "light") {
+        document.body.classList.add("light-mode");
+        document.getElementById("themeIcon").textContent = "☀️";
+    }
+};
+
+// Toggle theme
+function toggleTheme() {
+    document.body.classList.toggle("light-mode");
+
+    const isLight = document.body.classList.contains("light-mode");
+    document.getElementById("themeIcon").textContent = isLight ? "☀️" : "🌙";
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+}

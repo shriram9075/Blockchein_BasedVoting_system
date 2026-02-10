@@ -8,12 +8,19 @@
     <div class="container">
         <h1>Voter Registration</h1>
         <form id="registrationForm">
-            <input type="text" id="name" placeholder="Full Name" required><br>
-            <input type="text" id="voter_id" placeholder="Voter ID" required><br>
-            <input type="number" id="age" placeholder="Age" required><br>
-            <input type="text" id="address" placeholder="Address" required><br>
-            <button type="submit">Submit</button>
-        </form>
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="text" id="voter_id" placeholder="Voter ID">
+    <input type="number" id="age" placeholder="Age">
+    <input type="text" id="address" placeholder="Address">
+
+    <button type="submit" id="submitBtn">Register</button>
+</form>
+
+<!-- Loader -->
+<div id="loader" class="loader hidden"></div>
+
+<div id="message"></div>
+
         <div id="message"></div>
     </div>
 
